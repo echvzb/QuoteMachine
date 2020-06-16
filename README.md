@@ -1,2 +1,0 @@
-# QuoteMachine
-Created with CodeSandbox
