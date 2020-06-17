@@ -12,7 +12,7 @@ export default props => {
     mediaText += elem + "%20";
   });
   return (
-    <div className="card px-5 py-3" id="quote-box">
+    <div className="card container" id="quote-box">
       <div className="card-body">
         <QuoteBody text={props.estado.text} author={props.estado.author} />
         <FooterButton onNewPhrase={props.newPhrase} mediaText={mediaText} />
