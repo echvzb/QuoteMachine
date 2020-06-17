@@ -4,7 +4,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { createStore } from "redux";
 import { connect, Provider } from "react-redux";
-
+import "./styles.css";
 library.add(fab);
 
 //Redux
@@ -52,9 +52,17 @@ quotes.forEach(elem => {
 const changeReducer = (state = defaultState, action) => {
   switch (action.type) {
     case CHANGE: {
+      let neutro = 0;
+      if (state.author === state.quotes[action.index].author) {
+        if (state.quotes[action.index + 1].author) {
+          neutro = 1;
+        } else {
+          neutro = -1;
+        }
+      }
       return Object.assign({}, state, {
-        text: state.quotes[action.index].text,
-        author: state.quotes[action.index].author
+        text: state.quotes[action.index + neutro].text,
+        author: state.quotes[action.index + neutro].author
       });
     }
     default: {
@@ -92,14 +100,15 @@ const mapDispatchToProps = dispatch => {
 
 let App = props => {
   return (
-    <div className="container">
-      <div style={styles} />
-      <div className="row">
-        <div className="col-md-8 offset-md-2">
-          <QuoteCard estado={props.estado} newPhrase={props.changePhrase} />
+    <main>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 offset-md-2">
+            <QuoteCard estado={props.estado} newPhrase={props.changePhrase} />
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 const AppRedux = connect(
@@ -112,9 +121,4 @@ export default () => {
       <AppRedux />
     </Provider>
   );
-};
-
-const styles = {
-  height: "150px",
-  width: "100%"
 };
