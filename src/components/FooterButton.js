@@ -15,15 +15,15 @@ export default props => {
       </div>
 
       <div className="col-md-2 col-6 p-1">
-        <a href="#" className="btn btn-dark w-100">
+        <button className="btn btn-dark w-100">
           <FontAwesomeIcon icon={["fab", "tumblr"]} size="lg" />
-        </a>
+        </button>
       </div>
 
       <div className="offset-md-3 col-md-4 p-1">
-        <a href="#" className="btn btn-info w-100" onClick={props.onNewPhrase}>
+        <button className="btn btn-info w-100" onClick={props.onNewPhrase}>
           Nueva Frase
-        </a>
+        </button>
       </div>
     </div>
   );
